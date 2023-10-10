@@ -210,31 +210,59 @@ public class JavaApplication1 {
         }else 
             JOptionPane.showMessageDialog(null,"El número ingresado es primo");
         }
-     */   
+     
         //EJERCICIO 21  
         JOptionPane.showMessageDialog(null, "Ejercicio 21","Bienvenido al ",2);
-         
-        boolean bandera=false;
-        for (int x=1;x<100;x++){
-        if(x <=1){JOptionPane.showMessageDialog(null, "Numero no primo");
-        }else{
-            for (int i=2;i<=Math.sqrt(x);i++){
-                if(x % i==0){
-                bandera = true;
+        int max=100;
+        for (int x=2; x<=max;x++){
+            if(esPrimo(x)){
+                JOptionPane.showMessageDialog(null,x,"este numero es primo",2);
             }
         }
-        if (bandera == true){
-            JOptionPane.showMessageDialog(null,"El número ingresado no es primo");
-        }else 
-            JOptionPane.showMessageDialog(null,"El número ingresado es primo");
-        }}
         //EJERCICIO 22  
         JOptionPane.showMessageDialog(null, "Ejercicio 22","Bienvenido al ",2);
         String frase="La lluvía en Sevilla es una maravilla";
         int cantidad=cuentaVocales(frase);
         JOptionPane.showMessageDialog(null, cantidad,"N° de vocales en la frase",2);
-    
+     
+        //EJERCICIO 23
+        JOptionPane.showMessageDialog(null, "Ejercicio 23","Bienvenido al ",2);
+        String frase="La lluvía en Sevilla es una maravilla";
+        String fraseNormalizada=Normalizer.normalize(frase, Normalizer.Form.NFD);
+        String fraseSinAcentos=fraseNormalizada.replaceAll("[^\\p{ASCII}]", "");
+        String fraseNueva="";    
+        fraseNueva=fraseSinAcentos.replace('a', 'e'); 
+        JOptionPane.showMessageDialog(null, fraseNueva,"N° de vocales en la frase",2);
+        */   
+        //EJERCICIO 24
+        JOptionPane.showMessageDialog(null, "Ejercicio 24","Bienvenido al ",2);
+        int operando1=4, operando2=2;
+        char operador='/';
+        JOptionPane.showMessageDialog(null,calculadoraPolacaInversa(operando1,operando2,operador),"N° de vocales en la frase",2);
+        
     }
+    
+    
+    //FUNCIONES!!!!!!!!!!!!!!!
+    public static int calculadoraPolacaInversa(int a , int b, char operador){
+        int resultado=0;
+        switch (operador){
+            case '+':resultado= a+b; 
+            break;
+            case '-':resultado=a-b;
+            break;
+            case '*':resultado=a*b;
+            break;
+            case '/':resultado=a/b;
+            break;
+            case '^':resultado=a^b;
+            break;
+            case '%':resultado=a%b;
+            break;
+        }
+        return resultado;
+    }
+    
     public static int cuentaCifras(int num){
         int contador=0;
         if(num ==0){
@@ -266,5 +294,17 @@ public class JavaApplication1 {
             }
         } 
         return contador;
+    }
+    
+  
+    public static boolean esPrimo(int numero){
+        boolean primo = true;
+        int contador =2;
+        while ((primo)&&(contador!=numero)){
+            if(numero%contador ==0)
+                primo= false;
+            contador++;
+        } 
+        return primo;
     }
 }
