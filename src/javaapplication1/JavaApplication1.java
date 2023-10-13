@@ -233,18 +233,91 @@ public class JavaApplication1 {
         String fraseNueva="";    
         fraseNueva=fraseSinAcentos.replace('a', 'e'); 
         JOptionPane.showMessageDialog(null, fraseNueva,"N° de vocales en la frase",2);
-        */   
-        //EJERCICIO 24
+           
+        //EJERCICIO 24 
+         
         JOptionPane.showMessageDialog(null, "Ejercicio 24","Bienvenido al ",2);
-        int operando1=4, operando2=2;
-        char operador='/';
-        JOptionPane.showMessageDialog(null,calculadoraPolacaInversa(operando1,operando2,operador),"N° de vocales en la frase",2);
+        int correspAsci;
+        String frase="La lluvía en Sevilla es una maravilla";
+        for(int i=0;i<frase.length();i++){
+            correspAsci=(int)frase.charAt(i);
+        JOptionPane.showMessageDialog(null,correspAsci, "el valor de dicho caracter en Ascii es:", 2);
+        }
         
+        //EJERCICIO 25
+        JOptionPane.showMessageDialog(null, "Ejercicio 25","Bienvenido al ",2);
+        String op1=JOptionPane.showInputDialog("Ingrese el 1er valor entero");
+        int operando1=Integer.parseInt(op1);
+        String operador=JOptionPane.showInputDialog("Ingrese Operador");
+        char opera=operador.charAt(0);
+        String op2=JOptionPane.showInputDialog("Ingrese el 2do valor entero");
+        int operando2=Integer.parseInt(op2);
+        
+        JOptionPane.showMessageDialog(null,calculadoraPolacaInversa(operando1,operando2,opera),"Resultado de la operacion",2);
+        
+        //EJERCICIO 26
+        JOptionPane.showMessageDialog(null, "Ejercicio 26","Bienvenido al ",2);
+        String nro=JOptionPane.showInputDialog("Ingrese el tope para sumar");
+        double suma=0;
+        double nroSumar = Double.parseDouble(nro);
+        if (nroSumar<1){
+            JOptionPane.showMessageDialog(null, "Error","Debe Ingresar un numero mayor a 1 ",1);
+        }else{
+            for (int i=0;i<=nroSumar;i++){
+                suma=suma+i;
+                
+            }
+            JOptionPane.showMessageDialog(null,suma,"Total de la Suma",2);
+        }
+        
+        //EJERCICIO 27
+        JOptionPane.showMessageDialog(null, "Ejercicio 27","Bienvenido al ",2);
+        double flag;
+        int contador=0;
+        String nro=JOptionPane.showInputDialog("Ingrese un numero al azar");
+        flag= Double.parseDouble(nro);
+        while (flag!=-1){
+            contador++;
+            nro=JOptionPane.showInputDialog("Ingrese un numero al azar");
+            flag= Double.parseDouble(nro); 
+            
+        }
+        JOptionPane.showMessageDialog(null, contador,"Cantidad de Numeros Distintos a -1 ",2);
+        
+        //EJERCICIO 28
+        JOptionPane.showMessageDialog(null, "Ejercicio 28","Bienvenido al ",2);
+        String fraseUsuario=JOptionPane.showInputDialog("Ingrese una Frase");
+        String fraseSinEspacios=fraseUsuario.replaceAll(" ", "");
+        JOptionPane.showMessageDialog(null,fraseSinEspacios,"Espacios de la frase eliminados",2);
+        
+        //EJERCICIO 29
+        JOptionPane.showMessageDialog(null, "Ejercicio 29","Bienvenido al ",2);
+        String fraseInfinita="";       
+        String ingreso=JOptionPane.showInputDialog(null,"ingrese una frase", "para terminar ingrese un espacio",2);
+        while (!ingreso.equals(" ")){
+            fraseInfinita=fraseInfinita.concat(ingreso);
+            ingreso=JOptionPane.showInputDialog(null,"ingrese otra frase", "para terminar ingrese SOLO un espacio",2);
+        }
+        JOptionPane.showMessageDialog(null,fraseInfinita,"Frase Resultada",2);
+        */
+        //EJERCICIO 30
+        JOptionPane.showMessageDialog(null, "Ejercicio 30","Bienvenido al ",2);
+        String opcion=JOptionPane.showInputDialog(null,"Desea convertir a mayusculas (M) o minusculas?(m)");
+        String fraseUs="";
+        switch (opcion){
+            case "m": fraseUs=JOptionPane.showInputDialog(null,"ingrese al frase a convertir");
+                fraseUs=fraseUs.toLowerCase();
+                break;
+            case "M":fraseUs=JOptionPane.showInputDialog(null,"ingrese al frase a convertir");
+            fraseUs=fraseUs.toUpperCase();
+                break;
+        }
+        JOptionPane.showMessageDialog(null, fraseUs,"Resultado ",2);
     }
     
     
     //FUNCIONES!!!!!!!!!!!!!!!
-    public static int calculadoraPolacaInversa(int a , int b, char operador){
+    public static double calculadoraPolacaInversa(int a , int b, char operador){
         int resultado=0;
         switch (operador){
             case '+':resultado= a+b; 
